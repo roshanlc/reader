@@ -1,12 +1,13 @@
 CC = gcc
-CFLAGS = -std=c11
+CFLAGS = -std=c11 -Wall 
 DEST_DIR = /usr/bin
-
+LIBS = -l m
+all = reader
 reader: reader.o
-	$(CC) $(CFLAGS) reader.o -o reader
-
+	$(CC) $(CFLAGS)   reader.o -o reader $(LIBS)
 reader.o: reader.c
-	$(CC) $(CFLAGS) -c reader.c
+	$(CC) $(CFLAGS)  -c reader.c 
+
 
 .PHONY: clean
 clean:

@@ -8,17 +8,15 @@
  * 
  */
 
-
+#define _GUN_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
-
 #define PRINTRGBCHAR(r,g,b,ch) printf("\033[38;2;%d;%d;%dm%c\033[0m",r,g,b,ch) //macro function to print character with given rgb  color code as foreground
 
-const double PI = (22/7);
-
+#define M_PI 3.14159265358979323846264338327
 typedef struct {
     int r,g,b;
 }COLORS;
@@ -26,12 +24,12 @@ typedef struct {
 
 COLORS return_rgb(int i)
 {
-    double f=0.1;
+    double f=0.10025; //fixed frequency
     COLORS temp;
     
-    temp.r =(int) ((sin(f* (double) i ))*127 +128);
-    temp.g =(int) ((sin(f* (double) i + 2 * PI/3))*127 +128);
-    temp.b = (int)((sin(f* (double) i +4 * PI/3))*127 +128);
+    temp.r =(int) ((sin(f* (double) i + M_PI/3))*127 +128);
+    temp.g =(int) ((sin(f* (double) i + 2 *M_PI/3))*127 +128);
+    temp.b = (int)((sin(f* (double) i +4 * M_PI/3))*127 +128);
    return temp;
 }
 
@@ -41,10 +39,11 @@ void doTheJob(char *);
 
 int main (int argc, char *argv[])
 {
-	
     COLORS check;
-
-
+    FILE *fp;
+    char *line = NULL;
+    size_t size=0;
+    size_t nread;
 if(argc>1)
 {
 	if (strcmp(argv[1],"-v")==0)
@@ -58,7 +57,7 @@ if(argc>1)
 		  exit(0);
 	}
 
-	FILE *fp = fopen(argv[1],"r");
+    fp = fopen(argv[1],"r");
 	if(fp!=NULL)
 	{
 		char x;
@@ -76,7 +75,16 @@ if(argc>1)
 	else print_usage();
 	
 }
+else if((nread =getline(&line,&size,stdin)) != -1)
+{
 
+    doTheJob(line);
+    while((nread =getline(&line,&size,stdin)) != -1)
+     {
+         doTheJob(line);
+     }
+    free(line);
+}
 else print_usage();
 	return 0;
 }

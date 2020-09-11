@@ -10,7 +10,7 @@
 
   
 
-<img  alt="License: MIT"  src="https://img.shields.io/badge/License-MIT-yellow.svg"  />
+
 
   
 
@@ -18,11 +18,11 @@
 
   
 
-<a  href="https://twitter.com/_roshanlc"  target="_blank">
+
 
   
 
-<img  alt="Twitter: \_roshanlc"  src="https://img.shields.io/twitter/follow/_roshanlc.svg?style=social"  />
+
 
   
 
@@ -92,36 +92,11 @@ reader -v
 
   
 
-## Author
+### Supports
+* Piped input
+* Displaying files
 
   
 
   
 
-👤 **Roshan Lamichhane**
-
-  
-
-  
-
-* Website: https://roshanlc.github.io
-
-  
-
-* Twitter: [@_roshanlc](https://twitter.com/_roshanlc)
-
-  
-
-* Github: [@roshanlc](https://github.com/roshanlc)
-
-  
-
-  
-
-## Show your support
-
-  
-
-  
-
-Give a ⭐️ if you liked this project !
